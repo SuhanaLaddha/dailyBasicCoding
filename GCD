@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int gcd(int m,int n){
+    int z=min(m,n);
+    for(int i=z;i>=1;i--){
+        if(m%i==0 && n%i==0){
+            return i;
+        }
+    }
+    return 1;
+}
+int main(){
+    int m,n;
+    cin>>m>>n;
+    int z=gcd(m,n);
+    cout<<z;
+    return 0;
+}
