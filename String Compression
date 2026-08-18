@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int n=s.length();
+    map<char,int>freq;
+    for(char ch:s){
+        freq[ch]++;
+    }
+    for(auto it:freq){
+        cout<<it.first<<it.second;
+    }
+    return 0;
+    
+    //Brute Force:
+    // for(int i=0;i<n;i++){
+    //     int count=1;
+    //     while(i+1<n && s[i]==s[i+1]){
+    //         count++;
+    //         i++;
+    //     }
+    //     cout<<s[i]<<count;
+    // }
+}
