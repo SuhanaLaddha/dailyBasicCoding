@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int>nums(n);
+    for(int i=0;i<n;i++){
+        cin>>nums[i];
+    }
+    int k;
+    cin>>k;
+    unordered_map<int,int> mp;
+    mp[0]=1;
+    int prefixSum=0;
+    int count=0;
+    for(int num:nums){
+        prefixSum+=num;
+        if(mp.find(prefixSum-k)!=mp.end()){
+            count+=mp[prefixSum-k];
+        }
+        mp[prefixSum]++;
+    }
+    cout<<count;
+    return 0;
+}
