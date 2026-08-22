@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+void solve(string &s,int i,int j){
+    if(i>=j)return;
+    swap(s[i],s[j]);
+    solve(s,i+1,j-1);
+}
+int main(){
+    string s;
+    cin>>s;
+    //Through Recursion
+    int n=s.length();
+    solve(s,0,n-1);
+    cout<<s;
+
+
+
+    // int a;
+    // a=s.length();
+    // int i=0;
+    // for(int j=a-1;i<j;j--){
+    //     swap(s[i],s[j]);
+    //     i++;
+    // }
+    // cout<<s;
+    return 0;
+}
