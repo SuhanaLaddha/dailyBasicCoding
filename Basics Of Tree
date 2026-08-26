@@ -1,0 +1,112 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct TreeNode{
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int x){
+        val=x;
+        left=NULL;
+        right=NULL;
+    }
+};
+void preorder(TreeNode* root){
+    if(root==NULL){
+        return ;
+    }
+    cout<<root->val<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void inorder(TreeNode* root){
+    if(root==NULL){
+        return; 
+    }
+    inorder(root->left);
+    cout<<root->val<<" ";
+    inorder(root->right);
+}
+void postorder(TreeNode* root){
+    if(root==NULL){
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->val<<" ";
+}
+void levelorder(TreeNode* root){
+    if(root==NULL){
+        return;
+    }
+    queue<TreeNode*>q;
+    q.push(root);
+    while(!q.empty()){
+        TreeNode* current=q.front();
+        q.pop();
+        cout<<current->val<<" ";
+        if(current->left!=NULL){
+            q.push(current->left);
+        }
+        if(current->right!=NULL){
+            q.push(current->right);
+        }
+    }
+}
+TreeNode* createtree(int n){
+    if(n==0){
+        return NULL;
+    }
+    int value;
+    cin>>value;
+    TreeNode* root=new TreeNode(value);
+    queue<TreeNode*>q;
+    q.push(root);
+    int count=1;
+    while(count<n){
+        TreeNode* current=q.front();
+        q.pop();
+        cin>>value;
+        current->left=new TreeNode(value);
+        q.push(current->left);
+        count++;
+
+        cin>>value;
+        current->right=new TreeNode(value);
+        q.push(current->right);
+        count++;
+    }
+    return root;
+
+}
+
+int main(){
+    // TreeNode* root=new TreeNode(1);
+    // root->left=new TreeNode(2);
+    // root->right=new TreeNode(3);
+    // root->left->left=new TreeNode(4);
+    // root->left->right=new TreeNode(5);
+    int n;
+    cin>>n;
+    TreeNode* root=createtree(n);
+    cout<<"PreOrder: ";
+    preorder(root);
+
+    cout<<endl;
+
+    cout<<"PostOrder: ";
+    postorder(root);
+
+    cout<<endl;
+
+    cout<<"InOrder: ";
+    inorder(root);
+
+    cout<<endl;
+
+    cout<<"LevelOrder: ";
+    levelorder(root);
+
+    cout<<endl;
+
+}
